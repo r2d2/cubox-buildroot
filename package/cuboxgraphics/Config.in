@@ -1,0 +1,4 @@
+config BR2_PACKAGE_CUBOXGRAPHICS
+	bool "cuboxgraphics"
+	help
+	  proprietary libs

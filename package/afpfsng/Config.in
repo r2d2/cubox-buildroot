@@ -1,0 +1,5 @@
+config BR2_PACKAGE_AFPFSNG
+	bool "afpfsng"
+	help
+	  Apple file system support
+

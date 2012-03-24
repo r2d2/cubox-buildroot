@@ -1,0 +1,5 @@
+config BR2_PACKAGE_LIBPLIST
+	bool "libplist"
+	help
+	  A library to handle Apple Property List format whereas it's binary or XML.
+

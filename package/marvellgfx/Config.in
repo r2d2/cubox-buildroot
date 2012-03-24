@@ -1,0 +1,4 @@
+config BR2_PACKAGE_MARVELLGFX
+	bool "marvel gfx"
+	help
+	  proprietary libs from marvell

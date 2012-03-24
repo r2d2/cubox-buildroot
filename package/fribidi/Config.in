@@ -1,0 +1,5 @@
+config BR2_PACKAGE_FRIBIDI
+	bool "fribidi"
+	help
+	  fribidi
+

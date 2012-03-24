@@ -1,0 +1,12 @@
+--- samba-3.5.12/source3/Makefile.in	2012-03-12 21:01:44.211281745 +0100
++++ samba-3.5.12/source3/Makefile.in.ew	2012-03-12 21:04:47.235290473 +0100
+@@ -1470,6 +1470,8 @@
+ 
+ COMPILE = $(COMPILE_CC)
+ 
++rpc_parse/parse_prs.o: FLAGS+=-O0
++
+ .c.o:
+ 	@if (: >> $@ || : > $@) >/dev/null 2>&1; then rm -f $@; else \
+ 	 dir=`echo $@ | sed 's,/[^/]*$$,,;s,^$$,.,'` $(MAKEDIR); fi
+

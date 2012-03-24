@@ -1,0 +1,5 @@
+config BR2_PACKAGE_LIBSHAIRPORT
+	bool "libshairport"
+	help
+	  Airtunes emulator!
+

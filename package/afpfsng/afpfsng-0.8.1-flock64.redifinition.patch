@@ -1,0 +1,14 @@
+--- afpfsng-0.8.1/fuse/fuse_int.c.ori	2012-03-22 09:19:49.319430708 +0100
++++ afpfsng-0.8.1/fuse/fuse_int.c	2012-03-22 09:20:01.739502084 +0100
+@@ -24,11 +24,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <errno.h>
+-#ifdef __linux__
+-#include <asm/fcntl.h>
+-#else
+ #include <fcntl.h>
+-#endif
+ 
+ #include <utime.h>
+ #include <stdlib.h>

@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LIBMODPLUG
+	bool "libmodplug"
+	help
+	  libmodplug

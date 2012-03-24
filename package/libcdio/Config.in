@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LIBCDIO
+	bool "libcdio"
+	help
+	  libcdio
