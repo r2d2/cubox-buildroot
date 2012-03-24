@@ -17,6 +17,14 @@ config BR2_TOOLCHAIN_EXTERNAL_CODESOURCERY_ARM201103
             - ARMv4T, little endian, soft-float, glibc
             - ARMv7-A, Thumb 2, little endian, soft-float, glibc
 
+config BR2_TOOLCHAIN_EXTERNAL_MARVELL_ARM2010Q4
+	bool "Marvell ARM 2010q4"
+	depends on BR2_arm
+	select BR2_TOOLCHAIN_EXTERNAL_GLIBC
+	select BR2_INSTALL_LIBSTDCPP
+	help
+	  MARVELL toolchain (provided by http://www.plugcomputer.org/downloads/d2plug/)
+
 config BR2_TOOLCHAIN_EXTERNAL_CODESOURCERY_ARM201009
 	bool "Sourcery CodeBench ARM 2010.09"
 	depends on BR2_arm
@@ -266,6 +274,7 @@ config BR2_TOOLCHAIN_EXTERNAL_PREFIX
 	default "arm-none-linux-gnueabi" if BR2_TOOLCHAIN_EXTERNAL_CODESOURCERY_ARM2009Q3
 	default "arm-none-linux-gnueabi" if BR2_TOOLCHAIN_EXTERNAL_CODESOURCERY_ARM2010Q1
 	default "arm-none-linux-gnueabi" if BR2_TOOLCHAIN_EXTERNAL_CODESOURCERY_ARM201009
+	default "arm-marvell-linux-gnueabi" if BR2_TOOLCHAIN_EXTERNAL_MARVELL_ARM2010Q4
 	default "arm-none-linux-gnueabi" if BR2_TOOLCHAIN_EXTERNAL_CODESOURCERY_ARM201103
 	default "mips-linux-gnu"         if BR2_TOOLCHAIN_EXTERNAL_CODESOURCERY_MIPS44
 	default "mips-linux-gnu"         if BR2_TOOLCHAIN_EXTERNAL_CODESOURCERY_MIPS201103
