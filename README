@@ -1,0 +1,4 @@
+STATUS : dev in progress
+
+This project is aimed at building for Cubox using buildroot environment.
+This is based on buildroot-2012-02
