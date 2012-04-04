@@ -3,3 +3,16 @@ config BR2_PACKAGE_CUBOXXBMC
 	help
 	  xbmc port to cubox
 
+choice
+	prompt "branch selection"
+	default BR2_PACKAGE_CUBOXXBMC_GIMLI
+	depends on BR2_PACKAGE_CUBOXXBMC
+
+config BR2_PACKAGE_CUBOXXBMC_RABEEH
+	bool "rabeeh branch (gstreamer & X needed, no vmeta accel)"
+
+config BR2_PACKAGE_CUBOXXBMC_GIMLI
+	bool "gimli branch (vmeta accel & X needed, no gstreamer)"
+
+endchoice
+
