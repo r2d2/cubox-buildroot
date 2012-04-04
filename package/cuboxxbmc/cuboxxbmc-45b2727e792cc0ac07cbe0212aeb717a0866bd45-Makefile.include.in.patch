@@ -1,0 +1,8 @@
+--- xbmc/Makefile.include.in.ori	2012-03-22 08:08:44.885157864 +0100
++++ xbmc/Makefile.include.in	2012-03-22 08:09:37.475455520 +0100
+@@ -1,4 +1,4 @@
+-AR=ar
++AR=@AR@
+ ARFLAGS=crus
+ RM=rm -rf
+ SHELL=@SHELL@

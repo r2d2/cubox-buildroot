@@ -1,0 +1,41 @@
+--- cuboxxbmc-HEAD/configure.in	2011-12-18 11:54:48.000000000 +0100
++++ cuboxxbmc-HEAD/configure.in.new	2012-03-20 10:45:09.190282277 +0100
+@@ -677,6 +677,8 @@
+     AC_DEFINE([HAVE_LIBGLESV2],[1],["Define to 1 if you have the `GLESv2' library (-lGLESv2)."])
+     AC_MSG_RESULT(== WARNING: OpenGLES support is assumed.)
+   else
++    # Enable that for marvell binary delivery
++    # AC_CHECK_LIB([VIVANTE],   [main],, AC_MSG_ERROR($missing_library))
+     AC_CHECK_LIB([EGL],   [main],, AC_MSG_ERROR($missing_library))
+     AC_CHECK_LIB([GLESv2],[main],, AC_MSG_ERROR($missing_library))
+   fi
+@@ -702,10 +704,10 @@
+ fi
+ 
+ # platform common libraries
+-AC_CHECK_PROG(MYSQL_CONFIG, mysql_config, "yes", "no")
++AC_CHECK_PROG(MYSQL_CONFIG, mysql_config, "yes", "no",[$STAGING_DIR/usr/bin])
+ if test $MYSQL_CONFIG = "yes"; then
+-  INCLUDES="$INCLUDES `mysql_config --include`"
+-  MYSQL_LIBS=`mysql_config --libs`
++  INCLUDES="$INCLUDES `$STAGING_DIR/usr/bin/mysql_config --include`"
++  MYSQL_LIBS=`$STAGING_DIR/usr/bin/mysql_config --libs`
+   LIBS="$LIBS $MYSQL_LIBS"
+   AC_SUBST(MYSQL_LIBS)
+ else
+
+--- cuboxxbmc-45b2727e792cc0ac07cbe0212aeb717a0866bd45/configure.in.ori	2012-04-04 11:12:54.712871202 +0200
++++ cuboxxbmc-45b2727e792cc0ac07cbe0212aeb717a0866bd45/configure.in	2012-04-04 11:13:18.732872347 +0200
+@@ -541,9 +541,9 @@
+      ARCH="arm"
+      AC_SUBST(ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_LINUX -D_LINUX -D_ARMEL -DTARGET_MARVELL_DOVE")
+      AC_DEFINE(HAS_MARVELL_DOVE, [1], [Define if supporting Marvell Armada 510 (Dove)])
+-     CFLAGS="$CFLAGS -Wno-psabi -Wa,-march=armv7a -mtune=cortex-a8 -mfpu=vfpv3-d16 -mthumb -marm -O3 -ftree-vectorize"
+-     CXXFLAGS="$CXXFLAGS -Wno-psabi -Wa,-march=armv7a -mtune=cortex-a8 -mfpu=vfpv3-d16 -mthumb -marm -O3 -ftree-vectorize"
+-     FFMPEG_EXTRACFLAGS="$FFMPEG_EXTRACFLAGS -mtune=cortex-a8 -mfpu=vfpv3-d16 -O3 -ftree-vectorize -mthumb -marm"
++     CFLAGS="$CFLAGS -Wno-psabi -Wa,-march=armv7a -mtune=cortex-a8 -mfpu=vfpv3-d16 -O3 -ftree-vectorize"
++     CXXFLAGS="$CXXFLAGS -Wno-psabi -Wa,-march=armv7a -mtune=cortex-a8 -mfpu=vfpv3-d16 -O3 -ftree-vectorize"
++     FFMPEG_EXTRACFLAGS="$FFMPEG_EXTRACFLAGS -mtune=cortex-a8 -mfpu=vfpv3-d16 -O3 -ftree-vectorize"
+      USE_MARVELL_DOVE=1
+      ;;
+   *)
