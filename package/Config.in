@@ -599,6 +599,7 @@ source "package/fribidi/Config.in"
 source "package/libass/Config.in"
 source "package/marvellgfx/Config.in"
 source "package/cuboxgraphics/Config.in"
+source "package/lirc/Config.in"
 source "package/cuboxxbmc/Config.in"
 
 endmenu

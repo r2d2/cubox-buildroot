@@ -30,7 +30,25 @@ define MARVELLGFX_INSTALL_TARGET_CMDS
 #	cp -rf $(@D)/packages/libgfx/libgfx/etc/* $(TARGET_DIR)/etc/
 	$(INSTALL) -D -m 0755 $(@D)/libgfx/libgfx/bin/*.so* $(TARGET_DIR)/usr/lib/
 	$(INSTALL) -D -m 0755 $(@D)/marvell-ipp/marvell-ipp/bin/*.so* $(TARGET_DIR)/usr/lib/
-	cp -rf $(@D)/marvell-ipp/marvell-ipp/etc/* $(TARGET_DIR)/etc/
+	# Install xorg driver
+	cd $(@D)/xserver-xorg-video-dove-0.1.0 && ar x xserver-xorg-video-dove_0.3.4-1_armel.deb
+        cd $(@D)/xserver-xorg-video-dove-0.1.0 && tar xzvf data.tar.gz
+	cd $(@D)/xserver-xorg-video-dove-0.1.0 && cp -rf usr/lib/* $(TARGET_DIR)/usr/lib
+	# Install libvmeta
+	cd $(@D)/libvmeta && ar x libvmeta_1.0ubuntu2_armel.deb
+        cd $(@D)/libvmeta && tar xzvf data.tar.gz
+	cd $(@D)/libvmeta && cp -rf usr/lib/* $(TARGET_DIR)/usr/lib
+	# Install libbmm
+	cd $(@D)/bmm-lib && ar x libbmm0u_0.2.0-0ubuntu1~ppa8_armel.deb
+        cd $(@D)/bmm-lib && tar xzvf data.tar.gz
+	cd $(@D)/bmm-lib && cp -rf usr/lib/* $(TARGET_DIR)/usr/lib
+	# Install xorg.conf
+	cp package/marvellgfx/xorg.conf $(TARGET_DIR)/etc
+	# Install vmeta clock init script	
+	cd $(@D)/dove-vmeta-500MHz-conf && ar x dove-vmeta-500MHz-conf.deb
+        cd $(@D)/dove-vmeta-500MHz-conf && tar xzvf data.tar.gz
+	cd $(@D)/dove-vmeta-500MHz-conf && cp -rf etc/init.d/vmetaclk $(TARGET_DIR)/etc/init.d/S20vmetaclk
+
 endef
 
 $(eval $(call GENTARGETS,package,marvellgfx))

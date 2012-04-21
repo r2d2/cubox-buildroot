@@ -307,6 +307,7 @@ $(STAMP_DIR)/ext-toolchain-installed: $(TOOLCHAIN_EXTERNAL_DEPENDENCIES)
 	ARCH_SUBDIR=`$(TOOLCHAIN_EXTERNAL_CC) $(TOOLCHAIN_EXTERNAL_CFLAGS) -print-multi-directory` ; \
 	ARCH_SYSROOT_DIR=$${SYSROOT_DIR}/$${ARCH_SUBDIR} ; \
 	mkdir -p $(TARGET_DIR)/lib ; \
+	mkdir -p $(TARGET_DIR)/usr/lib ; \
 	echo "Copy external toolchain libraries to target..." ; \
 	for libs in $(LIB_EXTERNAL_LIBS); do \
 		$(call copy_toolchain_lib_root,$${ARCH_SYSROOT_DIR},$$libs,/lib); \
@@ -314,6 +315,7 @@ $(STAMP_DIR)/ext-toolchain-installed: $(TOOLCHAIN_EXTERNAL_DEPENDENCIES)
 	for libs in $(USR_LIB_EXTERNAL_LIBS); do \
 		$(call copy_toolchain_lib_root,$${ARCH_SYSROOT_DIR},$$libs,/usr/lib); \
 	done ; \
+	$(Q)cp -dr $(ARCH_SYSROOT_DIR)/usr/lib/gconv $(TARGET_DIR)/usr/lib ; \
 	echo "Copy external toolchain sysroot to staging..." ; \
 	$(call copy_toolchain_sysroot,$${SYSROOT_DIR},$${ARCH_SYSROOT_DIR},$${ARCH_SUBDIR}) ; \
 	if [ -L $${ARCH_SYSROOT_DIR}/lib64 ] ; then \
