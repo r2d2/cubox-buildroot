@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+# Stolen from RedHat FC5.
+#
+
+
+start() {
+
+	export DISPLAY=:0.0
+	echo -n "Starting X "
+	X &
+	echo -n "Starting xbmc"
+	xbmc --no-test &
+}	
+
+stop() {
+	echo "Stopping"
+}	
+
+restart() {
+	stop
+	start
+}	
+
+reload() {
+	echo "Reload"
+}	
+
+case "$1" in
+  start)
+  	start
+	;;
+  stop)
+  	stop
+	;;
+  restart)
+  	restart
+	;;
+  reload)
+  	reload
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart|reload}"
+	exit 1
+esac
+
+exit $?
