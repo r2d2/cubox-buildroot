@@ -8,7 +8,7 @@ start() {
 
 	export DISPLAY=:0.0
 	echo -n "Starting X "
-	X &
+	X -dpms -s 0 &
 	echo -n "Starting xbmc"
 	xbmc --no-test &
 }	
